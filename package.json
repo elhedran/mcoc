@@ -1,0 +1,49 @@
+{
+    "name": "elhedran-mcoc",
+    "version": "0.0.1",
+    "description": "An app for exploring hero ratings",
+    "main": "js/dist/index.js",
+    "typings": "js/dist/index",
+    "readme": "README.md",
+    "scripts": {
+        "clean_spec": "shx rm -rf js/spec",
+        "clean_cjs": "shx rm -rf js/dist",
+        "jasmine": "jasmine --config=src/jasmine.json",
+        "compile_cjs": "tsc",
+        "build_cjs": "npm-run-all clean_cjs compile_cjs",
+        "build_spec": "tsc --project ./tsconfig.spec.json --pretty",
+        "watch_spec": "tsc -w --project ./tsconfig.spec.json --pretty",
+        "build_test": "shx rm -rf ./js && npm-run-all build_cjs test",
+        "prewatch_test": "npm run build_spec",
+        "watch": "npm-run-all --parallel watch_spec watch_jasmine",
+        "build_all": "npm-run-all build_cjs",
+        "pretest": "npm run build_all",
+        "test": "npm-run-all clean_spec build_spec jasmine clean_spec",
+        "prewatch": "npm run build_spec",
+        "watch_jasmine": "watch \"npm-run-all jasmine\" js/spec -d -u -w=5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/elhedran/rxjs-dew.git"
+    },
+    "keywords": [
+        "typescript",
+        "rxjs"
+    ],
+    "author": "elhedran@gmail.com",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/elhedran/rxjs-dew/issues"
+    },
+    "homepage": "https://github.com/elhedran/rxjs-dew#readme",
+    "devDependencies": {
+        "@types/jasmine": "^2.5.54",
+        "jasmine": "^2.8.0",
+        "mkdirp": "^0.5.1",
+        "npm-run-all": "^4.1.1",
+        "shx": "^0.2.2",
+        "tslint": "^5.5.0",
+        "typescript": "^2.6.2",
+        "watch": "^1.0.2"
+    }
+}

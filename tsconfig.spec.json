@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "removeComments": false,
+        "sourceMap": true,
+        "declaration": false,
+        "allowJs": false,
+        "module": "commonjs",
+        "outDir": "js/spec",
+        "lib": [
+            "es6", "dom"
+        ]
+    },
+    "include": [
+        "src/**/*.spec.ts"
+    ]
+}
