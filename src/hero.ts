@@ -18,7 +18,7 @@ export type Hero = {
     heroId: string;
     name: string;
     heroClass: HeroClass;
-}
+};
 
 export type HeroRating = {
     heroId: string;
@@ -26,7 +26,7 @@ export type HeroRating = {
     needAwake?: boolean;
     needHighSig?: boolean;
     needSynergy?: string;
-}
+};
 
 export const heros: Hero[] = [
     { heroId: 'wv', name: 'Wolverine', heroClass: HeroClass.Mutant },

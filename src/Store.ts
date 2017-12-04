@@ -1,6 +1,8 @@
 import { State, initialState } from './State';
 import { Action, ActionType } from './Action';
 import * as Dew from 'rxjs-dew';
+import { Observable, Subject } from 'rxjs';
+export { Observable, Subject };
 
 export type Store = Dew.Store<State, Action>;
 
@@ -48,7 +50,7 @@ const soak: Dew.Soak<State, Action> = (state, action) => {
     return state;
 };
 
-export const createStore = () => Dew.createStore(
+export const createStore = (): Store => Dew.createStore(
     undefined,
     soak,
     initialState
