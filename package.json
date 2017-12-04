@@ -56,6 +56,8 @@
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "react-scripts-ts": "^2.8.0",
-        "react-tap-event-plugin": "^3.0.2"
+        "react-tap-event-plugin": "^3.0.2",
+        "semantic-ui-css": "^2.2.12",
+        "semantic-ui-react": "^0.77.0"
     }
 }
