@@ -20,7 +20,9 @@
         "pretest": "npm run build_all",
         "test": "npm-run-all clean_spec build_spec jasmine clean_spec",
         "prewatch": "npm run build_spec",
-        "watch_jasmine": "watch \"npm-run-all jasmine\" js/spec -d -u -w=5"
+        "watch_jasmine": "watch \"npm-run-all jasmine\" js/spec -d -u -w=5",
+        "start": "react-scripts-ts start",
+        "build": "react-scripts-ts build"
     },
     "repository": {
         "type": "git",
@@ -45,5 +47,15 @@
         "tslint": "^5.5.0",
         "typescript": "^2.6.2",
         "watch": "^1.0.2"
+    },
+    "dependencies": {
+        "@types/react": "^16.0.26",
+        "@types/react-dom": "^16.0.3",
+        "@types/react-tap-event-plugin": "0.0.30",
+        "font-awesome": "^4.7.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-scripts-ts": "^2.8.0",
+        "react-tap-event-plugin": "^3.0.2"
     }
 }
