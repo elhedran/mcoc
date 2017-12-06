@@ -59,8 +59,8 @@
         "react-scripts-ts": "^2.8.0",
         "react-tap-event-plugin": "^3.0.2",
         "rxjs": "^5.5.3",
-        "rxjs-dew": "^0.6.5",
-        "rxjs-dew-react": "^0.6.7",
+        "rxjs-dew": "^0.6.6",
+        "rxjs-dew-react": "^0.7.0",
         "semantic-ui-css": "^2.2.12",
         "semantic-ui-react": "^0.77.0"
     }

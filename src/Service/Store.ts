@@ -1,10 +1,11 @@
-import { State, initialState } from './State';
+import { State } from './State';
 import { Action, ActionType } from './Action';
 import * as Dew from 'rxjs-dew';
 import { Observable, Subject } from 'rxjs';
 export { Observable, Subject };
 
 export type Store = Dew.Store<State, Action>;
+export type Service = Store & typeof Action.creators;
 
 function toggle(set: string[], action: { id: string, value: boolean }): string[] {
     return action.value
@@ -53,5 +54,10 @@ const soak: Dew.Soak<State, Action> = (state, action) => {
 export const createStore = (): Store => Dew.createStore(
     undefined,
     soak,
-    initialState
+    State.initial
+);
+
+export const createService = (): Service => Dew.createService(
+    Action.creators,
+    createStore()
 );

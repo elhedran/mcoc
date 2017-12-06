@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Dew from 'rxjs-dew-react';
-import * as Store from './Store';
+import { createService } from './Service';
 import {
   Container, Dropdown, Menu
 } from 'semantic-ui-react';
@@ -21,13 +21,15 @@ class App extends React.Component<{}, AppState> {
     appLocation: AppLocation.Home
   };
 
-  private store = Store.createStore();
+  private storeMap = {
+    heros: createService()
+  };
 
   private go = (to: AppLocation) => this.setState({ appLocation: to });
 
   render() {
     return (
-      <Dew.Provider store={this.store} >
+      <Dew.Provider store={this.storeMap} >
         <div>
           <Menu fixed="top" inverted>
             <Container>
