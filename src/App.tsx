@@ -5,6 +5,7 @@ import {
   Container, Dropdown, Menu
 } from 'semantic-ui-react';
 import { MyHeros } from './MyHeros';
+import { style, types } from 'typestyle';
 
 export enum AppLocation {
   Home = 'Home',
@@ -57,10 +58,9 @@ class App extends React.Component<{}, AppState> {
               </Dropdown>
             </Container>
           </Menu>
-
-          <Container style={{ marginTop: '7em' }}>
+          <div className={style(contentStyle)}>
             <MyHeros />
-          </Container>
+          </div>
         </div>
       </Dew.Provider>
     );
@@ -68,3 +68,8 @@ class App extends React.Component<{}, AppState> {
 }
 
 export default App;
+
+const contentStyle: types.NestedCSSProperties = {
+  paddingTop: '4em', paddingLeft: '1em', paddingRight: '1em', paddingBottom: '1em',
+  backgroundColor: '#668'
+};

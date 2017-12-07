@@ -13,10 +13,16 @@ function toggle(set: string[], action: { id: string, value: boolean }): string[]
         : set.filter(i => i !== action.id);
 }
 
-function limitTo(set: string[], action: { id: string, value: boolean }): string[] {
+function removeOrKeep(set: string[], action: { id: string, value: boolean }): string[] {
     return action.value
         ? set
         : set.filter(i => i !== action.id);
+}
+
+function addOrKeep(set: string[], action: { id: string, value: boolean }): string[] {
+    return action.value
+        ? [action.id, ...set.filter(i => i !== action.id)]
+        : set;
 }
 
 const soak: Dew.Soak<State, Action> = (state, action) => {
@@ -31,20 +37,23 @@ const soak: Dew.Soak<State, Action> = (state, action) => {
             return {
                 ...state,
                 own: toggle(state.own, action),
-                awake: limitTo(state.awake, action),
-                highSig: limitTo(state.highSig, action)
+                awake: removeOrKeep(state.awake, action),
+                highSig: removeOrKeep(state.highSig, action)
             };
         case ActionType.Awake:
-        return {
-            ...state,
-            awake: toggle(state.awake, action),
-            highSig: limitTo(state.highSig, action)            
-        };
+            return {
+                ...state,
+                own: addOrKeep(state.own, action),
+                awake: toggle(state.awake, action),
+                highSig: removeOrKeep(state.highSig, action)
+            };
         case ActionType.High:
-        return {
-            ...state,
-            highSig: toggle(state.highSig, action)
-        };
+            return {
+                ...state,
+                own: addOrKeep(state.own, action),
+                awake: addOrKeep(state.awake, action),
+                highSig: toggle(state.highSig, action)
+            };
         default:
             break;
     }
