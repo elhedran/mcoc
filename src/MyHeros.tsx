@@ -26,18 +26,20 @@ export class MyHeros extends Dew.Consumer<{}, MyHeros.State> {
     render() {
         return (
             <div>
+                <h1 style={{ color: '#eef' }}>My Champions</h1>
                 <Segment style={{ maxWidth: 600 }}>
                     <h2> Filter</h2>
                     <Form>
-                        <Form.Input
-                            label="Name"
-                            value={this.state.filter || ''}
-                            onChange={(e, v) => this.setState({ filter: v.value })}
-                        />
                         <Form.Checkbox
                             label="Owned Only"
                             checked={!!this.state.onlyOwned}
                             onChange={(e, v) => this.setState({ onlyOwned: v.checked })}
+                        />
+                        <Form.Input
+                            label="Name"
+                            icon="search"
+                            value={this.state.filter || ''}
+                            onChange={(e, v) => this.setState({ filter: v.value })}
                         />
                     </Form>
                 </Segment>
