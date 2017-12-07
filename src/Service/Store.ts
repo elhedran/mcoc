@@ -60,11 +60,21 @@ const soak: Dew.Soak<State, Action> = (state, action) => {
     return state;
 };
 
-export const createStore = (): Store => Dew.createStore(
-    undefined,
-    soak,
-    State.initial
-);
+export const createStore = (): Store => {
+    const initialStr = window && typeof Storage !== 'undefined' && window.localStorage.getItem('mcoc:heroList');
+    const initial = initialStr && JSON.parse(initialStr) as State || State.initial;
+    const store = Dew.createStore(
+        undefined,
+        soak,
+        initial
+    );
+    store.state$.subscribe(state => {
+        if (window && typeof Storage !== 'undefined') {
+            window.localStorage.setItem('mcoc:heroList', JSON.stringify(state));
+        }
+    });
+    return store;
+};
 
 export const createService = (): Service => Dew.createService(
     Action.creators,
