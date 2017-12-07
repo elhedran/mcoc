@@ -1,3 +1,5 @@
+import { SemanticCOLORS } from 'semantic-ui-react';
+
 export enum Tier {
     God = 'God',
     DemiGod = 'DemiGod',
@@ -50,3 +52,36 @@ export const heros: Hero[] = [
     { heroId: 'cb', name: 'Cable', heroClass: HeroClass.Mutant }
 
 ];
+
+export const heroCompare: (a: Hero, b: Hero) => number = (a, b) =>
+    a.heroClass === b.heroClass
+        ? a.name.localeCompare(b.name)
+        : a.heroClass.localeCompare(b.heroClass);
+
+export const heroColor: (a: Hero) => SemanticCOLORS = (hero) => {
+    var color: SemanticCOLORS;
+    switch (hero.heroClass) {
+        case HeroClass.Cosmic:
+            color = 'teal';
+            break;
+        case HeroClass.Mutant:
+            color = 'yellow';
+            break;
+        case HeroClass.Mystic:
+            color = 'purple';
+            break;
+        case HeroClass.Science:
+            color = 'green';
+            break;
+        case HeroClass.Skill:
+            color = 'red';
+            break;
+        case HeroClass.Tech:
+            color = 'blue';
+            break;
+        default:
+            color = 'black';
+            break;
+    }
+    return color;
+};

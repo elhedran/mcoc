@@ -6,6 +6,8 @@ import {
 } from 'semantic-ui-react';
 import { MyHeros } from './MyHeros';
 import { style, types } from 'typestyle';
+import { Rated } from './Rated';
+import { offense } from './ratings';
 
 export enum AppLocation {
   Home = 'Home',
@@ -31,7 +33,7 @@ class App extends React.Component<{}, AppState> {
   render() {
     return (
       <Dew.Provider store={this.storeMap} >
-        <div>
+        <div style={{top: 0, left: 0, right: 0, bottom: 0, position: 'absolute'}}>
           <Menu fixed="top" inverted>
             <Container>
               <Menu.Item header>
@@ -59,7 +61,12 @@ class App extends React.Component<{}, AppState> {
             </Container>
           </Menu>
           <div className={style(contentStyle)}>
-            <MyHeros />
+            {this.state.appLocation === AppLocation.Home
+            ? <MyHeros />
+            : null}
+            {this.state.appLocation === AppLocation.Offense
+            ? <Rated heroRatings={offense} title="Offense" />
+            : null}
           </div>
         </div>
       </Dew.Provider>
@@ -71,5 +78,6 @@ export default App;
 
 const contentStyle: types.NestedCSSProperties = {
   paddingTop: '4em', paddingLeft: '1em', paddingRight: '1em', paddingBottom: '1em',
-  backgroundColor: '#668'
+  backgroundColor: '#668',
+  minHeight: '100%'
 };

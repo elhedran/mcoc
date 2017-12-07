@@ -1,8 +1,8 @@
 import * as Dew from 'rxjs-dew-react';
 import * as React from 'react';
 import { State, Service } from './Service';
-import { Hero, HeroClass } from './hero';
-import { Card, Form, SemanticCOLORS, Label } from 'semantic-ui-react';
+import { Hero, heroColor } from './hero';
+import { Card, Form, Label } from 'semantic-ui-react';
 import { style, types } from 'typestyle';
 
 export namespace HeroCard {
@@ -24,30 +24,8 @@ export class HeroCard extends Dew.Consumer<HeroCard.Props, {}> {
     }
     render() {
         const hero = this.props.hero;
-        var color: SemanticCOLORS;
-        switch (hero.heroClass) {
-            case HeroClass.Cosmic:
-                color = 'teal';
-                break;
-            case HeroClass.Mutant:
-                color = 'yellow';
-                break;
-            case HeroClass.Mystic:
-                color = 'purple';
-                break;
-            case HeroClass.Science:
-                color = 'green';
-                break;
-            case HeroClass.Skill:
-                color = 'red';
-                break;
-            case HeroClass.Tech:
-                color = 'blue';
-                break;
-            default:
-                color = 'black';
-                break;
-        }
+        const color = heroColor(hero);
+
         return (
             <Card raised={true} color={color} className={style(cardStyle)}>
                 <Card.Header>

@@ -20,3 +20,6 @@ export const offense: HeroRating[] = [
     { heroId: 'pl', tier: Tier.DemiGod, needAwake: true },
     { heroId: 'cb', tier: Tier.DemiGod }
 ];
+
+export const defense: HeroRating[] = [];
+    

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Dew from 'rxjs-dew-react';
-import { heros } from './hero';
+import { heros, heroCompare } from './hero';
 import { Card, Form, Segment } from 'semantic-ui-react';
 import { HeroCard } from './HeroCard';
 import { State as ServiceState, Service } from './Service';
@@ -47,11 +47,7 @@ export class MyHeros extends Dew.Consumer<{}, MyHeros.State> {
                     {heros
                         .filter(h => !this.state.filter || h.name.search(new RegExp(this.state.filter, 'i')) !== -1)
                         .filter(h => !this.state.onlyOwned || this.state.own.some(o => o === h.heroId))
-                        .sort((a, b) =>
-                            a.heroClass === b.heroClass
-                                ? a.name.localeCompare(b.name)
-                                : a.heroClass.localeCompare(b.heroClass)
-                        )
+                        .sort(heroCompare)
                         .map(h => <HeroCard key={h.heroId} hero={h} />)}
                 </Card.Group>
             </div>
