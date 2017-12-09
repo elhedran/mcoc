@@ -11,17 +11,10 @@ export namespace HeroCard {
     };
 }
 
-export class HeroCard extends Dew.Consumer<HeroCard.Props, {}> {
+export class HeroCard extends Dew.BoundConsumer<HeroCard.Props, State, keyof State> {
     state = State.initial;
     protected store = this.storeMap.heros as Service;
 
-    componentWillMount() {
-        this.subscribe(this.store.state$);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
     render() {
         const hero = this.props.hero;
         const color = heroColor(hero);

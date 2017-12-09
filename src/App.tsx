@@ -32,7 +32,7 @@ class App extends React.Component<{}, AppState> {
 
   render() {
     return (
-      <Dew.Provider store={this.storeMap} >
+      <Dew.Provider storeMap={this.storeMap} >
         <div style={{top: 0, left: 0, right: 0, bottom: 0, position: 'absolute'}}>
           <Menu fixed="top" inverted>
             <Container>

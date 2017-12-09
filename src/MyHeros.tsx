@@ -12,17 +12,10 @@ export namespace MyHeros {
     };
 }
 
-export class MyHeros extends Dew.Consumer<{}, MyHeros.State> {
+export class MyHeros extends Dew.BoundConsumer<{}, MyHeros.State, keyof ServiceState> {
     state: MyHeros.State = ServiceState.initial;
     protected store = this.storeMap.heros as Service;
 
-    componentWillMount() {
-        this.subscribe(this.store.state$);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
     render() {
         return (
             <div>

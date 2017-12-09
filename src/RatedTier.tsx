@@ -11,17 +11,9 @@ export namespace RatedTier {
     };
 }
 
-export class RatedTier extends Dew.Consumer<RatedTier.Props, {}> {
+export class RatedTier extends Dew.BoundConsumer<RatedTier.Props, State, keyof State> {
     state = State.initial;
     protected store = this.storeMap.heros as Service;
-
-    componentWillMount() {
-        this.subscribe(this.store.state$);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
 
     render() {
         const own = this.state.own;

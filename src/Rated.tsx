@@ -11,17 +11,9 @@ export namespace Rated {
     };
 }
 
-export class Rated extends Dew.Consumer<Rated.Props, {}> {
+export class Rated extends Dew.BoundConsumer<Rated.Props, State, keyof State> {
     state = State.initial;
     protected store = this.storeMap.heros as Service;
-
-    componentWillMount() {
-        this.subscribe(this.store.state$);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
 
     render() {
         const heroRatings = this.props.heroRatings;
