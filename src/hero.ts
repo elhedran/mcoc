@@ -115,7 +115,7 @@ export const heros: Hero[] = [
     { heroId: 'kk', name: 'Kamala Khan', heroClass: HeroClass.Cosmic },
 
     { heroId: 'sl', name: 'Star-Lord', heroClass: HeroClass.Tech },
-    { heroId: 'sm(ts)', name: 'Spider-Man (Tony Stark', heroClass: HeroClass.Tech },
+    { heroId: 'sm(ts)', name: 'Spider-Man (Tony Stark)', heroClass: HeroClass.Tech },
     { heroId: 'vison', name: 'Vision', heroClass: HeroClass.Tech },
     { heroId: 'ultron', name: 'Ultron', heroClass: HeroClass.Tech },
     { heroId: 'do', name: 'Doctor Octopus', heroClass: HeroClass.Tech },
@@ -130,7 +130,7 @@ export const heros: Hero[] = [
     { heroId: 'im', name: 'Iron Man', heroClass: HeroClass.Tech },
     { heroId: 'cw', name: 'Civil Warrior', heroClass: HeroClass.Tech },
     { heroId: 'wm', name: 'War Machine', heroClass: HeroClass.Tech },
-    { heroId: 'hb', name: 'Hulk BUster', heroClass: HeroClass.Tech },
+    { heroId: 'hb', name: 'Hulk Buster', heroClass: HeroClass.Tech },
     { heroId: 'ip', name: 'Iron Patrio', heroClass: HeroClass.Tech },
 
     { heroId: 'hulk', name: 'Hulk', heroClass: HeroClass.Science },
