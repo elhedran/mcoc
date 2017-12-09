@@ -3,7 +3,7 @@ import * as React from 'react';
 import { State, Service } from './Service';
 import { heros, HeroRating, Tier, Hero } from './hero';
 import { RatedTier } from './RatedTier';
-import { Segment, Checkbox } from 'semantic-ui-react';
+import { Segment, Checkbox, Message } from 'semantic-ui-react';
 
 export namespace Rated {
     export type Props = {
@@ -76,6 +76,10 @@ export class Rated extends Dew.BoundConsumer<Rated.Props, Rated.S, keyof State> 
         return (
             <div>
                 <h1 style={{ color: '#eef' }}>{this.props.title}</h1>
+                <Message info>
+                    <span>Based on Seatin's Ranking Spreadsheet found </span>
+                    <a href="https://docs.google.com/spreadsheets/u/1/d/1beR2CAlBQ2XBA3M1jJ1aPEfwE46eQt6LU-lzA0babxQ/htmlview#">here</a>.
+                </Message>
                 <Segment>
                     <Checkbox
                         checked={!!this.state.myHeros}
