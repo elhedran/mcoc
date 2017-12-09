@@ -25,9 +25,9 @@
         "label-position": true,
         "max-line-length": [true, 120],
         "member-ordering": false,
-        "no-any": true,
+        "no-any": false,
         "no-arg": true,
-        "no-bitwise": true,
+        "no-bitwise": false,
         "no-console": [
             true,
             "log",
