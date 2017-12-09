@@ -83,13 +83,13 @@ export class Rated extends Dew.BoundConsumer<Rated.Props, Rated.S, keyof State> 
                         onChange={(e, v) => this.setState({ myHeros: v.checked })}
                     />
                 </Segment>
-                <div>
+                <Segment.Group horizontal>
                     <RatedTier title="God Tier" heroRatings={gods} />
                     <RatedTier title="Demigod Tier" heroRatings={demigods} />
                     <RatedTier title="Amazing Tier" heroRatings={amazing} />
                     <RatedTier title="Good Tier" heroRatings={good} />
                     <RatedTier title="Meh Tier" heroRatings={meh} />
-                </div>
+                </Segment.Group>
             </div>
         );
     }
