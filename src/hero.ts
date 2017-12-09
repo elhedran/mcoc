@@ -1,8 +1,9 @@
 import { SemanticCOLORS } from 'semantic-ui-react';
 
 export namespace Tier {
-    export const God = 3;
-    export const DemiGod = 2;
+    export const God = 4;
+    export const DemiGod = 3;
+    export const Amazing = 2;
     export const Good = 1;
     export const Meh = 0;
 }
@@ -18,7 +19,11 @@ export enum HeroClass {
     Mutant = 'Mutant'
 }
 
-export type Tag = 'awake' | 'highSig' | 'mysticDisperion';
+export type TagAdjust = {
+    awake?: number;
+    highSig?: number;
+    mysticDisperion?: number;
+};
 
 export type Hero = {
     heroId: string;
@@ -29,9 +34,7 @@ export type Hero = {
 export type HeroRating = {
     heroId: string;
     tier: Tier;
-    tags?: {
-        [key: string]: number;
-    };
+    tags?: TagAdjust;
     synergy?: {
         [key: string]: number;
     }
@@ -117,6 +120,7 @@ export const heros: Hero[] = [
     { heroId: 'ultron', name: 'Ultron', heroClass: HeroClass.Tech },
     { heroId: 'do', name: 'Doctor Octopus', heroClass: HeroClass.Tech },
     { heroId: 'nebula', name: 'Nebula', heroClass: HeroClass.Tech },
+    { heroId: 'p(2099)', name: 'Punisher 2099', heroClass: HeroClass.Tech },
     { heroId: 'gg', name: 'Green Goblin', heroClass: HeroClass.Tech },
     { heroId: 'rr', name: 'Rocket Raccoon', heroClass: HeroClass.Tech },
     { heroId: 'yondu', name: 'Yondo', heroClass: HeroClass.Tech },
