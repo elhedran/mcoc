@@ -31,7 +31,13 @@ const soak: Dew.Soak<State, Action> = (state, action) => {
             return {
                 own: [],
                 awake: [],
-                highSig: []
+                highSig: [],
+                masteries: []
+            };
+        case ActionType.Mastery:
+            return {
+                ...state,
+                masteries: toggle(state.masteries, action)
             };
         case ActionType.Own:
             return {
@@ -62,7 +68,11 @@ const soak: Dew.Soak<State, Action> = (state, action) => {
 
 export const createStore = (): Store => {
     const initialStr = window && typeof Storage !== 'undefined' && window.localStorage.getItem('mcoc:heroList');
-    const initial = initialStr && JSON.parse(initialStr) as State || State.initial;
+    let initial = initialStr && JSON.parse(initialStr) as State || State.initial;
+    initial = {
+        ...State.initial,
+        ...initial
+    };
     const store = Dew.createStore(
         undefined,
         soak,

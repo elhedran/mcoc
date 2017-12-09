@@ -2,7 +2,8 @@ export enum ActionType {
     Own,
     Awake,
     High,
-    Reset
+    Reset,
+    Mastery
 }
 
 export namespace Action {
@@ -24,6 +25,12 @@ export namespace Action {
         value: boolean
     };
 
+    export type Mastery = {
+        type: ActionType.Mastery,
+        id: string;
+        value: boolean;
+    };
+
     export type Reset = {
         type: ActionType.Reset
     };
@@ -32,9 +39,10 @@ export namespace Action {
         own: (id: string, value: boolean): Own => ({ type: ActionType.Own, id, value }),
         awake: (id: string, value: boolean): Awake => ({ type: ActionType.Awake, id, value }),
         high: (id: string, value: boolean): High => ({ type: ActionType.High, id, value }),
+        mastery: (id: string, value: boolean): Mastery => ({ type: ActionType.Mastery, id, value }),
         reset: (value: boolean): Reset => ({ type: ActionType.Reset })
     };
 }
 
 export type Action = Action.Awake | Action.High
-    | Action.Own | Action.Reset;
+    | Action.Own | Action.Mastery | Action.Reset;

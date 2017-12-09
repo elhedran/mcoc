@@ -20,22 +20,34 @@ export class MyHeros extends Dew.BoundConsumer<{}, MyHeros.State, keyof ServiceS
         return (
             <div>
                 <h1 style={{ color: '#eef' }}>My Champions</h1>
-                <Segment style={{ maxWidth: 600 }}>
-                    <h2> Filter</h2>
-                    <Form>
-                        <Form.Checkbox
-                            label="Owned Only"
-                            checked={!!this.state.onlyOwned}
-                            onChange={(e, v) => this.setState({ onlyOwned: v.checked })}
-                        />
-                        <Form.Input
-                            label="Name"
-                            icon="search"
-                            value={this.state.filter || ''}
-                            onChange={(e, v) => this.setState({ filter: v.value })}
-                        />
-                    </Form>
-                </Segment>
+                <Segment.Group horizontal>
+                    <Segment>
+                        <h2>Filter</h2>
+                        <Form>
+                            <Form.Checkbox
+                                label="Owned Only"
+                                checked={!!this.state.onlyOwned}
+                                onChange={(e, v) => this.setState({ onlyOwned: v.checked })}
+                            />
+                            <Form.Input
+                                label="Name"
+                                icon="search"
+                                value={this.state.filter || ''}
+                                onChange={(e, v) => this.setState({ filter: v.value })}
+                            />
+                        </Form>
+                    </Segment>
+                    <Segment>
+                        <h2>Key Masteries</h2>
+                        <Form>
+                            <Form.Checkbox
+                                label="Mystic Disperion"
+                                checked={this.state.masteries.some(m => m === 'mysticDisperion')}
+                                onChange={(e, v) => this.store.mastery('mysticDisperion', v.checked || false)}
+                            />
+                        </Form>
+                    </Segment>
+                </Segment.Group>
                 <Card.Group >
                     {heros
                         .filter(h => !this.state.filter || h.name.search(new RegExp(this.state.filter, 'i')) !== -1)
