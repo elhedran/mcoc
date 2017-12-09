@@ -1,11 +1,13 @@
 import { SemanticCOLORS } from 'semantic-ui-react';
 
-export enum Tier {
-    God = 'God',
-    DemiGod = 'DemiGod',
-    Good = 'Good',
-    Meh = 'Meh'
+export namespace Tier {
+    export const God = 3;
+    export const DemiGod = 2;
+    export const Good = 1;
+    export const Meh = 0;
 }
+
+export type Tier = number;
 
 export enum HeroClass {
     Skill = 'Skill',
@@ -16,6 +18,8 @@ export enum HeroClass {
     Mutant = 'Mutant'
 }
 
+export type Tag = 'awake' | 'highSig' | 'mysticDisperion';
+
 export type Hero = {
     heroId: string;
     name: string;
@@ -25,9 +29,12 @@ export type Hero = {
 export type HeroRating = {
     heroId: string;
     tier: Tier;
-    needAwake?: boolean;
-    needHighSig?: boolean;
-    needSynergy?: string;
+    tags?: {
+        [key: string]: number;
+    };
+    synergy?: {
+        [key: string]: number;
+    }
 };
 
 export const heros: Hero[] = [
