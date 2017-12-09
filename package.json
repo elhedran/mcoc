@@ -22,11 +22,13 @@
         "prewatch": "npm run build_spec",
         "watch_jasmine": "watch \"npm-run-all jasmine\" js/spec -d -u -w=5",
         "start": "react-scripts-ts start",
-        "build": "react-scripts-ts build"
+        "build": "react-scripts-ts build",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/elhedran/rxjs-dew.git"
+        "url": "git+https://github.com/elhedran/mcoc.git"
     },
     "keywords": [
         "typescript",
@@ -35,11 +37,12 @@
     "author": "elhedran@gmail.com",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/elhedran/rxjs-dew/issues"
+        "url": "https://github.com/elhedran/mcoc/issues"
     },
-    "homepage": "https://github.com/elhedran/rxjs-dew#readme",
+    "homepage": "https://elhedran.github.io/",
     "devDependencies": {
         "@types/jasmine": "^2.5.54",
+        "gh-pages": "^1.1.0",
         "jasmine": "^2.8.0",
         "mkdirp": "^0.5.1",
         "npm-run-all": "^4.1.1",
