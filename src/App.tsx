@@ -7,7 +7,7 @@ import {
 import { MyHeros } from './MyHeros';
 import { style, types } from 'typestyle';
 import { Rated } from './Rated';
-import { offense } from './ratings';
+import { offense, defense } from './ratings';
 
 export enum AppLocation {
   Home = 'Home',
@@ -42,7 +42,7 @@ class App extends React.Component<{}, AppState> {
               <Menu.Item
                 onClick={() => this.go(AppLocation.Home)}
               >
-                My Heros
+                My Champions
               </Menu.Item>
               <Dropdown item simple text="Ratings">
                 <Dropdown.Menu>
@@ -67,6 +67,10 @@ class App extends React.Component<{}, AppState> {
             {this.state.appLocation === AppLocation.Offense
             ? <Rated heroRatings={offense} title="Offense" />
             : null}
+            {this.state.appLocation === AppLocation.Defense
+            ? <Rated heroRatings={defense} title="Defense" />
+            : null}
+
           </div>
         </div>
       </Dew.Provider>

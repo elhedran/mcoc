@@ -1,9 +1,9 @@
 import * as Dew from 'rxjs-dew-react';
 import * as React from 'react';
 import { State, Service } from './Service';
-import { heros, HeroRating, Tier, Hero } from './hero';
+import { heros, HeroRating, Tier, Hero, HeroClass } from './hero';
 import { RatedTier } from './RatedTier';
-import { Segment, Checkbox, Message } from 'semantic-ui-react';
+import { Segment, Checkbox, Message, Divider, Icon } from 'semantic-ui-react';
 
 export namespace Rated {
     export type Props = {
@@ -16,11 +16,17 @@ export namespace Rated {
 }
 
 function getOwnedHeroTags(hero: Hero, state: State): string[] {
-    return state.highSig.some(o => o === hero.heroId)
+    const tags = state.highSig.some(o => o === hero.heroId)
         ? ['awake', 'highSig']
         : state.awake.some(o => o === hero.heroId)
             ? ['awake']
             : [];
+    if (state.masteries.some(m => m === 'mysticDisperion')) {
+        if (hero.heroClass === HeroClass.Mystic) {
+            tags.push('mysticDisperion');
+        }
+    }
+    return tags;
 }
 
 function getRatingsTags(hero: Hero, ratings: HeroRating[]): string[] {
@@ -86,13 +92,17 @@ export class Rated extends Dew.BoundConsumer<Rated.Props, Rated.S, keyof State> 
                         label="My Heros Only"
                         onChange={(e, v) => this.setState({ myHeros: v.checked })}
                     />
+                    <Divider />
+                    <Icon name="star" /> - Champion is Awakened<br/>
+                    <Icon name="arrow up" /> - Champion has a High Signature<br/>
+                    <Icon name="eye" /> - Summoner's Mystic Desperion Mastery aids this champion
                 </Segment>
                 <Segment.Group horizontal>
-                    <RatedTier title="God Tier" heroRatings={gods} />
-                    <RatedTier title="Demigod Tier" heroRatings={demigods} />
-                    <RatedTier title="Amazing Tier" heroRatings={amazing} />
-                    <RatedTier title="Good Tier" heroRatings={good} />
-                    <RatedTier title="Meh Tier" heroRatings={meh} />
+                    <RatedTier title="God" heroRatings={gods} />
+                    <RatedTier title="Demigod" heroRatings={demigods} />
+                    <RatedTier title="Amazing" heroRatings={amazing} />
+                    <RatedTier title="Good" heroRatings={good} />
+                    <RatedTier title="Meh" heroRatings={meh} />
                 </Segment.Group>
             </div>
         );
