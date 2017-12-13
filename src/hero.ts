@@ -149,6 +149,7 @@ export const heros: Hero[] = [
     { heroId: 'lc', name: 'Luke Cage', heroClass: HeroClass.Science },
     { heroId: 'ab', name: 'Abonination', heroClass: HeroClass.Science },
     { heroId: 'am', name: 'Ant-Man', heroClass: HeroClass.Science },
+    { heroId: 'mordo', name: 'Mordo', heroClass: HeroClass.Science },
 ];
 
 export const heroCompare: (a: Hero, b: Hero) => number = (a, b) =>
