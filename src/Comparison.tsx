@@ -69,17 +69,17 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                             <Table.HeaderCell>Defense</Table.HeaderCell>
                         </Table.Header>
                         <Table.Row>
-                            <Table.Cell>God</Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">God</Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier heroRatings={offenseChampions.filter(h => h.tier >= Tier.God)} />
                             </Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier heroRatings={defenseChampions.filter(h => h.tier >= Tier.God)} />
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row>
-                            <Table.Cell>Demigod</Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">Demigod</Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         offenseChampions.filter(
@@ -88,7 +88,7 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         defenseChampions.filter(
@@ -99,8 +99,8 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row>
-                            <Table.Cell>Amazing</Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">Amazing</Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         offenseChampions.filter(
@@ -109,7 +109,7 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         defenseChampions.filter(
@@ -120,8 +120,8 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row>
-                            <Table.Cell>Good</Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">Good</Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         offenseChampions.filter(
@@ -130,7 +130,7 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         defenseChampions.filter(
@@ -141,8 +141,8 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                             </Table.Cell>
                         </Table.Row>
                         <Table.Row>
-                            <Table.Cell>Meh</Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">Meh</Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         offenseChampions.filter(
@@ -151,7 +151,7 @@ export class Comparison extends Dew.BoundConsumer<Comparison.Props, Comparison.S
                                     }
                                 />
                             </Table.Cell>
-                            <Table.Cell>
+                            <Table.Cell verticalAlign="top">
                                 <RatedTier
                                     heroRatings={
                                         defenseChampions.filter(
