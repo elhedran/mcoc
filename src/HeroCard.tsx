@@ -2,7 +2,7 @@ import * as Dew from 'rxjs-dew-react';
 import * as React from 'react';
 import { State, Service } from './Service';
 import { Hero, heroColor } from './hero';
-import { Card, Form, Label } from 'semantic-ui-react';
+import { Card, Form, Label, Icon } from 'semantic-ui-react';
 import { style, types } from 'typestyle';
 
 export namespace HeroCard {
@@ -27,21 +27,24 @@ export class HeroCard extends Dew.BoundConsumer<HeroCard.Props, State, keyof Sta
                 </Card.Header>
                 <Card.Content>
                     <Form>
-                    <Form.Checkbox
-                        label="Owned"
-                        checked={this.state.own.some(e => e === hero.heroId)}
-                        onChange={(e, v) => v.checked !== undefined && this.store.own(hero.heroId, v.checked)}
-                    />
-                    <Form.Checkbox
-                        label="Awake"
-                        checked={this.state.awake.some(e => e === hero.heroId)}
-                        onChange={(e, v) => v.checked !== undefined && this.store.awake(hero.heroId, v.checked)}
-                    />
-                    <Form.Checkbox
-                        label="High Signature"
-                        checked={this.state.highSig.some(e => e === hero.heroId)}
-                        onChange={(e, v) => v.checked !== undefined && this.store.high(hero.heroId, v.checked)}
-                    />
+                        <Form.Group>
+                            <Form.Checkbox
+                                label="Owned"
+                                checked={this.state.own.some(e => e === hero.heroId)}
+                                onChange={(e, v) => v.checked !== undefined && this.store.own(hero.heroId, v.checked)}
+                            />
+                            <Form.Checkbox
+                                checked={this.state.awake.some(e => e === hero.heroId)}
+                                onChange={(e, v) => v.checked !== undefined && this.store.awake(hero.heroId, v.checked)}
+                            />
+                            <Icon name="star" />
+
+                            <Form.Checkbox
+                                checked={this.state.highSig.some(e => e === hero.heroId)}
+                                onChange={(e, v) => v.checked !== undefined && this.store.high(hero.heroId, v.checked)}
+                            />
+                            <Icon name="arrow up" />
+                        </Form.Group>
                     </Form>
                 </Card.Content>
             </Card>

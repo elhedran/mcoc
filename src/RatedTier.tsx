@@ -2,11 +2,10 @@ import * as Dew from 'rxjs-dew-react';
 import * as React from 'react';
 import { State, Service } from './Service';
 import { Tier, Hero, heroCompare, heroColor } from './hero';
-import { Segment, Label, Icon } from 'semantic-ui-react';
+import { Label, Icon } from 'semantic-ui-react';
 
 export namespace RatedTier {
     export type Props = {
-        title: string;
         heroRatings: (Hero & { tags: string[] } & { tier: Tier })[]
     };
 }
@@ -17,8 +16,7 @@ export class RatedTier extends Dew.BoundConsumer<RatedTier.Props, State, keyof S
 
     render() {
         return (
-            <Segment>
-                <h2>{this.props.title}</h2>
+            <div>
                 {this.props.heroRatings
                     .sort(heroCompare)
                     .map(h => (
@@ -35,7 +33,7 @@ export class RatedTier extends Dew.BoundConsumer<RatedTier.Props, State, keyof S
                         </div>
                     ))
                 }
-            </Segment>
+            </div>
         );
     }
 }

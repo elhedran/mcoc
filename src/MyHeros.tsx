@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Dew from 'rxjs-dew-react';
 import { heros, heroCompare } from './hero';
-import { Card, Form, Segment } from 'semantic-ui-react';
+import { Card, Form, Segment, Divider, Icon } from 'semantic-ui-react';
 import { HeroCard } from './HeroCard';
 import { State as ServiceState, Service } from './Service';
 
@@ -36,15 +36,22 @@ export class MyHeros extends Dew.BoundConsumer<{}, MyHeros.State, keyof ServiceS
                                 onChange={(e, v) => this.setState({ filter: v.value })}
                             />
                         </Form>
+                        <Divider />
+                        <Icon name="star" /> - Champion is Awakened<br />
+                        <Icon name="arrow up" /> - Champion has a High Signature<br />
                     </Segment>
                     <Segment>
                         <h2>Key Masteries</h2>
                         <Form>
-                            <Form.Checkbox
-                                label="Mystic Disperion"
-                                checked={this.state.masteries.some(m => m === 'mysticDisperion')}
-                                onChange={(e, v) => this.store.mastery('mysticDisperion', v.checked || false)}
-                            />
+                            <Form.Group>
+                                <Icon name="eye" />
+                                <Form.Checkbox
+                                    label="Mystic Disperion"
+                                    checked={this.state.masteries.some(m => m === 'mysticDisperion')}
+                                    onChange={(e, v) => this.store.mastery('mysticDisperion', v.checked || false)}
+
+                                />
+                            </Form.Group>
                         </Form>
                     </Segment>
                 </Segment.Group>

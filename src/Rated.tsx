@@ -49,7 +49,7 @@ export class Rated extends Dew.BoundConsumer<Rated.Props, Rated.S, keyof State> 
                 <Segment>
                     <Checkbox
                         checked={!!this.state.myHeros}
-                        label="My Heros Only"
+                        label="My Champions Only"
                         onChange={(e, v) => this.setState({ myHeros: v.checked })}
                     />
                     <Divider />
@@ -58,11 +58,26 @@ export class Rated extends Dew.BoundConsumer<Rated.Props, Rated.S, keyof State> 
                     <Icon name="eye" /> - Summoner's Mystic Desperion Mastery aids this champion
                 </Segment>
                 <Segment.Group horizontal>
-                    <RatedTier title="God" heroRatings={gods} />
-                    <RatedTier title="Demigod" heroRatings={demigods} />
-                    <RatedTier title="Amazing" heroRatings={amazing} />
-                    <RatedTier title="Good" heroRatings={good} />
-                    <RatedTier title="Meh" heroRatings={meh} />
+                    <Segment>
+                        <h2>God</h2>
+                        <RatedTier heroRatings={gods} />
+                    </Segment>
+                    <Segment>
+                        <h2>Demigod</h2>
+                        <RatedTier heroRatings={demigods} />
+                    </Segment>
+                    <Segment>
+                        <h2>Amazing</h2>
+                        <RatedTier heroRatings={amazing} />
+                    </Segment>
+                    <Segment>
+                        <h2>Good</h2>
+                        <RatedTier heroRatings={good} />
+                    </Segment>
+                    <Segment>
+                        <h2>Meh</h2>
+                        <RatedTier heroRatings={meh} />
+                    </Segment>
                 </Segment.Group>
             </div>
         );
