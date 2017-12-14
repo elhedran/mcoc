@@ -1,4 +1,6 @@
 import { SemanticCOLORS } from 'semantic-ui-react';
+import { State } from './Service';
+import './find';
 
 export namespace Tier {
     export const God = 4;
@@ -182,4 +184,59 @@ export const heroColor: (a: Hero) => SemanticCOLORS = (hero) => {
             break;
     }
     return color;
+};
+
+function getOwnedHeroTags(hero: Hero, state: State): string[] {
+    const tags = state.highSig.some(o => o === hero.heroId)
+        ? ['awake', 'highSig']
+        : state.awake.some(o => o === hero.heroId)
+            ? ['awake']
+            : [];
+    if (state.masteries.some(m => m === 'mysticDisperion')) {
+        if (hero.heroClass === HeroClass.Mystic) {
+            tags.push('mysticDisperion');
+        }
+    }
+    return tags;
+}
+
+function getRatingsTags(hero: Hero, ratings: HeroRating[]): string[] {
+    const rating = ratings.find(r => r.heroId === hero.heroId);
+    return rating && rating.tags && Object.keys(rating.tags) || [];
+}
+
+function getTier(hero: Hero & { tags: string[] }, ratings: HeroRating[]): Tier {
+    const rating = ratings.find(r => r.heroId === hero.heroId);
+    let tier = rating && rating.tier || Tier.Meh;
+    for (let i = 0; i < hero.tags.length; i++) {
+        let tag = hero.tags[i];
+        tier += rating && rating.tags && rating.tags[tag] || 0;
+    }
+    return tier;
+}
+
+export const scoredChampions = (myHeroes: boolean, state: State, ratings: HeroRating[]) => {
+    const ratedHeros = myHeroes
+        ? heros
+            .filter(hero => state.own.some(o => o === hero.heroId))
+            .map(
+            hero => ({
+                ...hero,
+                tags: getOwnedHeroTags(hero, state)
+            })
+            )
+        : heros
+            .map(
+            hero => ({
+                ...hero,
+                tags: getRatingsTags(hero, ratings)
+            })
+            );
+    return ratedHeros
+        .map(
+        hero => ({
+            ...hero,
+            tier: getTier(hero, ratings)
+        })
+        );
 };
